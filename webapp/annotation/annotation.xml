@@ -1,0 +1,265 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/Northwindtwo/V2/Northwind/Northwind.svc/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="NorthwindModel"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="orderSmartApp.annotation.annotation.NorthwindModel">
+			<Annotations Target="Metadata.Order">
+				<Annotation Term="UI.DataPoint" Qualifier="progressindicator">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Int="8"/>
+						<PropertyValue Property="Title" String="ProgressIndicatorTitle"/>
+						<PropertyValue Property="Description" String="ProgressIndicatorTitleDescrption"/>
+						<PropertyValue Property="TargetValue" Int="10"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="aggregatedratingind">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Int="1"/>
+						<PropertyValue Property="Title" String="Rating Aggregated"/>
+						<PropertyValue Property="TargetValue" Int="5"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+						<PropertyValue Property="SampleSize" Path="OrderID">
+							<Annotation Term="Common.Label" String="orders"/>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="nonaggregatedratingind">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Int="2"/>
+						<PropertyValue Property="TargetValue" Int="5"/>
+						<PropertyValue Property="Description" String="Rating description"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;RATING_NON_AGGREGATED}"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="Datapoint2">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="CustomerID"/>
+						<PropertyValue Property="Title" String="Data point 2"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="Datapoint1">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="EmployeeID"/>
+						<PropertyValue Property="Title" String="Data point 1"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="plaintextfacet">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerID"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;CUSTOMERID}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@Communication.Contact"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#plaintextfacet"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Datapoint1"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Datapoint2"/>
+						</Record>
+						
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#nonaggregatedratingind"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#aggregatedratingind"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#progressindicator"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="MaterialCustomerId">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="CustomerID"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;CUSTOMERID}"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="MaterialOrderDate">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="OrderDate"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;ORDER_DATE}"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="MaterialOrderID">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="OrderID"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;ORDERID}"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Communication.Contact">
+					<Record Type="Communication.ContactType">
+						<PropertyValue Property="fn" String="DemoContactItem1"/>
+						<PropertyValue Property="email">
+							<Collection>
+								<Record Type="Communication.EmailAddressType">
+									<PropertyValue Property="address" String="abc@gmail.com"/>
+									<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="tel">
+							<Collection>
+								<Record Type="Communication.PhoneNumberType">
+									<PropertyValue Property="uri" String="Mock"/>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/cell"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="communication">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataFieldForAnnotation">
+									<PropertyValue Property="Target" AnnotationPath="@Communication.Contact"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;DEMOCONTACTFACET}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="Order"/>
+						<PropertyValue Property="TypeNamePlural" String="Orders"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" String="Title of object page"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" String="Description of object page( Subtitle)"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#orderDetails"/>
+										<PropertyValue Property="Label" String="Order Information"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#shipmentDetails"/>
+										<PropertyValue Property="Label" String="Shipment Information"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="Label" String="Collection facet one"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="Collection facet two"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#plaintextfacet"/>
+										<PropertyValue Property="Label" String="General Information"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="orderDetails">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="OrderID"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;ORDERID}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerID"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;CUSTOMERID}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="RequiredDate"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;REQUIRED_DATE}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="OrderDate"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;ORDER_DATE}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="shipmentDetails">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ShipName"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;SHIPMENT_NAME}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ShipAddress"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;SHIPMENT_ADDRESS}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ShipCity"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;SHIPMENT_CITY}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ShipCountry"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;SHIPMENT_COUNTRY}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>OrderID</PropertyPath>
+						<PropertyPath>CustomerID</PropertyPath>
+						<PropertyPath>OrderDate</PropertyPath>
+						<PropertyPath>RequiredDate</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CustomerID"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="OrderDate"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="RequiredDate"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
